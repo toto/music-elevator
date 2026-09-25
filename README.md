@@ -58,6 +58,18 @@ Format the microSD card as FAT32 and start with `001.mp3`. Connect the speaker o
 3. Copy `secrets.example.h` to `secrets.h` and enter the Wi-Fi and server details.
 4. Open `firmware/elevator_controller/elevator_controller.ino`, select `ESP32 Dev Module` and upload it.
 
+To install the same board support and libraries with Arduino CLI:
+
+```sh
+arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+arduino-cli core update-index
+arduino-cli core install esp32:esp32
+arduino-cli lib update-index
+arduino-cli lib install "Adafruit BME680 Library" "DFRobotDFPlayerMini"
+```
+
+Arduino CLI installs the BME680 library's dependencies automatically. `DFRobotDFPlayerMini` is used by the audio test sketch; the main controller does not use it yet. The `ESP32 Dev Module` board profile is `esp32:esp32:esp32` in Arduino CLI.
+
 The BME680 tries I²C addresses `0x76` and `0x77`. The controller averages 30 pressure readings at startup, then posts this JSON to the server:
 
 ```json
