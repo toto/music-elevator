@@ -36,6 +36,21 @@ The earlier BMP390 and Mini D1 ideas were replaced by the hardware above. The BM
 | CS | Disconnected |
 | SDO | Disconnected |
 
+### DFPlayer Mini connection
+
+The audio player is not used by the firmware yet; these are the prepared connections for the standard DFPlayer Mini.
+
+| DFPlayer Mini | ESP32 DevKit |
+| --- | --- |
+| VCC | `VCC` / 5 V pin near the USB-C connector |
+| GND | GND |
+| RX | GPIO17 through a ~1 kΩ resistor |
+| TX | GPIO16 |
+| SPK1 | Speaker `+` |
+| SPK2 | Speaker `−` |
+
+Format the microSD card as FAT32 and start with `001.mp3`. Connect the speaker only between SPK1 and SPK2; neither speaker wire goes to GND.
+
 ## Firmware setup
 
 1. Install `esp32 by Espressif Systems` board support.
