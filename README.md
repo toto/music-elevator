@@ -1,6 +1,6 @@
-# Halloween Elevator
+# Music Elevator
 
-Source code for the ESP32-based Halloween elevator project.
+Source code for the ESP32-based music elevator project. Play a sound on every level.
 
 ## Layout
 
