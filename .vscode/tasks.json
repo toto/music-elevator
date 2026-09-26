@@ -14,11 +14,13 @@
     {
       "label": "Arduino: Build",
       "type": "process",
-      "command": "/Applications/Arduino IDE.app/Contents/Resources/app/lib/backend/resources/arduino-cli",
+      "command": "arduino-cli",
       "args": [
         "compile",
         "--fqbn",
         "esp32:esp32:esp32",
+        "--build-property",
+        "runtime.tools.ctags.path=${workspaceFolder}/tools/arduino-ctags",
         "${workspaceFolder}/firmware/elevator_controller"
       ],
       "problemMatcher": "$gcc",
@@ -31,18 +33,20 @@
     {
       "label": "Arduino: Upload",
       "type": "process",
-      "command": "/Applications/Arduino IDE.app/Contents/Resources/app/lib/backend/resources/arduino-cli",
+      "command": "arduino-cli",
       "args": [
-        "upload",
+        "compile",
+        "--upload",
         "--port",
-        "/dev/cu.usbserial-8310",
+        "/dev/cu.usbserial-23110",
         "--fqbn",
         "esp32:esp32:esp32",
         "--board-options",
         "UploadSpeed=115200",
+        "--build-property",
+        "runtime.tools.ctags.path=${workspaceFolder}/tools/arduino-ctags",
         "${workspaceFolder}/firmware/elevator_controller"
       ],
-      "dependsOn": "Arduino: Build",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -53,13 +57,13 @@
     {
       "label": "Arduino: Monitor",
       "type": "process",
-      "command": "/Applications/Arduino IDE.app/Contents/Resources/app/lib/backend/resources/arduino-cli",
+      "command": "arduino-cli",
       "args": [
         "monitor",
         "--port",
-        "/dev/cu.usbserial-8310",
+        "/dev/cu.usbserial-23110",
         "--config",
-        "baudrate=115200"
+        "baudrate=115200,dtr=off,rts=off"
       ],
       "problemMatcher": [],
       "presentation": {

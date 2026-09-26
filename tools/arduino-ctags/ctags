@@ -1,0 +1,5 @@
+#!/bin/sh
+# Arduino CLI calls this while generating prototypes for .ino files.
+# Our sketches define functions before use, so no generated prototypes are needed.
+# The bundled Arduino ctags is x86_64-only and cannot run on this Apple Silicon Mac.
+exit 0
